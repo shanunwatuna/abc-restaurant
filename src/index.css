@@ -1,13 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: "Oswald", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+} */
+
+.main-container {
+  background-image: url("/public/assets/background.jpg");
+  background-size: cover;
+}
+
+.nav-item {
+  color: #fff;
+  width: 7rem;
+  border-radius: 5px;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.navbar-nav .nav-link.active {
+  color: rgb(255, 255, 255);
+}
+
+.nav-link:focus {
+  color: yellow;
+}
+
+.nav-link:hover {
+  color: gray;
+}
+
+.h-10 {
+  height: 10%;
+}
+
+.h-90 {
+  height: 90%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-20 {
+  width: 20%;
+}
+
+.w-40{
+  width: 40%;
+}
+
+.main-course td {
+  padding: 0.5rem;
+}
+
+/* Login Custom CSS */
+.bg-login {
+  background-image: url('../public/assets/background_login.jpg');
+  background-size: cover;
 }
