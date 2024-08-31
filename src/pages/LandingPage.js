@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Navigation from "../component/Navigation";
 
 function LandingPage() {
@@ -30,9 +30,11 @@ function LandingPage() {
                 </Link>
               </div>
               <div className="w-50">
+              <Link to="/signup">
                 <button className="w-100 p-2 rounded fw-semibold btn btn-outline-secondary">
                   Signup
                 </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -80,10 +82,7 @@ function LandingPage() {
         </div>
 
         {/* Service */}
-        <div
-          id="service"
-          className="d-flex flex-column align-items-center py-4 bg-dark"
-        >
+        <div id="service" className="d-flex flex-column align-items-center py-4 bg-dark">
           <div className="mb-3">
             <h1 className="text-white">Services</h1>
           </div>
@@ -358,18 +357,18 @@ function LandingPage() {
                 </div>
               </div>
               <div className="d-flex px-5 mt-4">
-                <div class="mb-3 w-50 me-5">
-                  <label class="form-label w-100 text-start ps-2" for="pax">
-                    Pax
-                  </label>
-                  <input type="text" class="form-control" id="pax" />
-                </div>
-                <div class="mb-3 w-50">
-                  <label class="form-label w-100 text-start ps-2" for="phone">
-                    Phone
-                  </label>
-                  <input type="text" class="form-control" id="phone" />
-                </div>
+              <div class="mb-3 w-50 me-5">
+                <label class="form-label w-100 text-start ps-2" for="pax">
+                  Pax
+                </label>
+                <input type="text" class="form-control" id="pax" />
+              </div>
+              <div class="mb-3 w-50">
+                <label class="form-label w-100 text-start ps-2" for="phone">
+                  Phone
+                </label>
+                <input type="text" class="form-control" id="phone" />
+              </div>
               </div>
               <button type="submit" class="btn btn-dark w-25 mt-3">
                 Submit
