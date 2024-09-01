@@ -66,12 +66,13 @@ function LandingPage() {
         {/* Gallery */}
         <Gallery />
         {/* Menu */}
-        <div>
-          <MenuPage />
-        </div>
+        <MenuPage />
 
         {/* Reservation */}
         <Reservation />
+
+        {/* OnlineOrder */}
+        <OnlineOrder />
 
         {/* Contact */}
         <Contact />

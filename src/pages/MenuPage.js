@@ -42,7 +42,7 @@ function MenuPage() {
           </div>
           <div className="w-50">
             <img
-              src="assets/chessBurger.jpg"
+              src="assets/Menu1.jpg"
               alt="menu 1"
               className="object-fit-cover w-75"
             />
