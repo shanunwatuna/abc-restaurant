@@ -50,7 +50,7 @@ function Login() {
                 Submit
               </button>
               <div className="mt-3">
-                New user? Register <Link to="/register">here</Link>
+                New user? Register <Link to="/signup">here</Link>
               </div>
             </form>
           </div>

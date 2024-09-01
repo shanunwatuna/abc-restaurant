@@ -80,7 +80,7 @@ function Register() {
                 Submit
               </button>
               <div className="mt-3">
-                Already have an account? Login <Link to="Login.js">here</Link>
+                Already have an account? Login <Link to="/login">here</Link>
               </div>
             </form>
           </div>

@@ -76,3 +76,8 @@ body {
   background-image: url('../public/assets/background_login.jpg');
   background-size: cover;
 }
+
+.bg-register {
+  background-image: url('../public/assets/background_login.jpg');
+  background-size: cover;
+}
