@@ -22,112 +22,74 @@ function OnlineOrder() {
     { id: 18, name: 'Ice Milo', price: 750, photo: 'assets/IceMilo1.jpeg', quantity: 1 },
   ]);
 
-  const [selectedOrderId, setSelectedOrderId] = useState(null);
-  const [lastSelectedOrderTotal, setLastSelectedOrderTotal] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2;
+  const [selectedOrderIndex, setSelectedOrderIndex] = useState(0);
+  const [lastOrderTotal, setLastOrderTotal] = useState(0);
+
+  const selectedOrder = orders[selectedOrderIndex];
 
   useEffect(() => {
-    if (selectedOrderId !== null) {
-      const selectedOrder = orders.find(order => order.id === selectedOrderId);
-      if (selectedOrder) {
-        setLastSelectedOrderTotal(selectedOrder.price * selectedOrder.quantity);
-      }
+    if (selectedOrder) {
+      setLastOrderTotal(selectedOrder.price * selectedOrder.quantity);
     }
-  }, [orders, selectedOrderId]);
-
-  const handleSelectOrder = (id) => {
-    setSelectedOrderId(id);
-  };
+  }, [selectedOrder]);
 
   const handleQuantityChange = (amount) => {
-    if (selectedOrderId !== null) {
-      setOrders(orders.map(order => {
-        if (order.id === selectedOrderId) {
-          const updatedQuantity = Math.max(1, order.quantity + amount);
-          return { ...order, quantity: updatedQuantity };
-        }
-        return order;
-      }));
-    }
+    setOrders(orders.map((order, index) => {
+      if (index === selectedOrderIndex) {
+        const updatedQuantity = Math.max(1, order.quantity + amount);
+        return { ...order, quantity: updatedQuantity };
+      }
+      return order;
+    }));
   };
 
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handleNextItem = () => {
+    setSelectedOrderIndex((selectedOrderIndex + 1) % orders.length);
   };
-
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const paginatedOrders = orders.slice(startIndex, endIndex);
 
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6 md:p-8 bg-black text-white">
       <h1 className="text-3xl font-bold">Online Order</h1>
-      <div className="mt-8 space-y-4">
-        {paginatedOrders.map((order) => (
-          <div
-            key={order.id}
-            className={`relative bg-gray-800 bg-opacity-80 rounded-lg shadow-md p-4 flex items-center`}
-          >
-            <img src={order.photo} alt={order.name} className="w-20 h-20 object-cover mb-4 rounded-lg mr-4" />
-            <div className="flex-grow">
-              <h2 className="text-lg font-bold">{order.name}</h2>
-              <p className="text-lg">Rs.{order.price}</p>
-              <p className="text-lg">Quantity: {order.quantity}</p>
-            </div>
-            <button
-              className={`ml-4 py-2 px-4 rounded-lg ${
-                selectedOrderId === order.id
-                  ? "bg-yellow-500 hover:bg-yellow-400"
-                  : "bg-gray-600 hover:bg-gray-500"
-              }`}
-              onClick={() => handleSelectOrder(order.id)}
-            >
-              {selectedOrderId === order.id ? "Selected" : "Select"}
-            </button>
-          </div>
-        ))}
+
+      {/* Display the selected order */}
+      <div className="relative bg-gray-800 bg-opacity-80 rounded-lg shadow-md p-4 flex items-center border-2 border-yellow-500">
+        <img src={selectedOrder.photo} alt={selectedOrder.name} className="w-20 h-20 object-cover mb-4 rounded-lg mr-4" />
+        <div className="flex-grow">
+          <h2 className="text-lg font-bold">{selectedOrder.name}</h2>
+          <p className="text-lg">Rs.{selectedOrder.price}</p>
+          <p className="text-lg">Quantity: {selectedOrder.quantity}</p>
+        </div>
       </div>
 
       {/* Quantity controls and total amount display */}
-      {selectedOrderId !== null && (
-        <div className="mt-8">
-          <div className="flex items-center">
-            <button
-              className="bg-gray-600 hover:bg-gray-500 py-2 px-4 rounded-lg"
-              onClick={() => handleQuantityChange(-1)}
-            >
-              -
-            </button>
-            <span className="mx-4 text-lg font-bold">
-              {orders.find(order => order.id === selectedOrderId)?.quantity}
-            </span>
-            <button
-              className="bg-gray-600 hover:bg-gray-500 py-2 px-4 rounded-lg"
-              onClick={() => handleQuantityChange(1)}
-            >
-              +
-            </button>
-          </div>
-          <p className="text-lg font-bold mt-4">Total: Rs.{lastSelectedOrderTotal.toFixed(2)}</p>
+      <div className="mt-8">
+        <div className="flex items-center">
+          <button
+            className="bg-gray-600 hover:bg-gray-500 py-2 px-4 rounded-lg"
+            onClick={() => handleQuantityChange(-1)}
+          >
+            -
+          </button>
+          <span className="mx-4 text-lg font-bold">
+            {selectedOrder.quantity}
+          </span>
+          <button
+            className="bg-gray-600 hover:bg-gray-500 py-2 px-4 rounded-lg"
+            onClick={() => handleQuantityChange(1)}
+          >
+            +
+          </button>
         </div>
-      )}
+        <p className="text-lg font-bold mt-4">Total for Selected Item: Rs.{lastOrderTotal.toFixed(2)}</p>
+      </div>
 
-      {/* Pagination controls */}
-      <div className="flex justify-between mt-8">
+      {/* Next Item Button */}
+      <div className="mt-8">
         <button
           className="bg-gray-600 hover:bg-gray-500 py-2 px-4 rounded-lg"
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
+          onClick={handleNextItem}
         >
-          Previous
-        </button>
-        <button
-          className="bg-gray-600 hover:bg-gray-500 py-2 px-4 rounded-lg"
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === Math.ceil(orders.length / itemsPerPage)}
-        >
-          Next
+          Next Item
         </button>
       </div>
     </div>
