@@ -8,6 +8,8 @@ import Gallery from "./Gallery";
 import Contact from "./Contact";
 import Reservation from "./Reservation";
 import OnlineOrder from "./OnlineOrder";
+import AdminMenu from "./AdminMenu";
+import AdminReport from "./AdminReport";
 
 function LandingPage() {
   return (
@@ -73,6 +75,12 @@ function LandingPage() {
 
         {/* OnlineOrder */}
         <OnlineOrder />
+
+        {/* AdminMenu */}
+        <AdminMenu/>
+
+         {/* AdminReport */}
+         <AdminReport/>
 
         {/* Contact */}
         <Contact />
