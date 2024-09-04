@@ -10,6 +10,8 @@ import Reservation from "./Reservation";
 import OnlineOrder from "./OnlineOrder";
 import AdminMenu from "./AdminMenu";
 import AdminReport from "./AdminReport";
+import Payment from "./Payment";
+import FeedBack from "./FeedBack";
 
 function LandingPage() {
   return (
@@ -77,13 +79,19 @@ function LandingPage() {
         <OnlineOrder />
 
         {/* AdminMenu */}
-        <AdminMenu/>
+        <AdminMenu />
 
-         {/* AdminReport */}
-         <AdminReport/>
+        {/* AdminReport */}
+        <AdminReport />
 
         {/* Contact */}
         <Contact />
+
+        {/* Payment */}
+        <Payment />
+
+        {/* FeedBack */}
+        <FeedBack />
       </div>
     </div>
   );
