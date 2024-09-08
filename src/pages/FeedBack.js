@@ -2,7 +2,7 @@ import React from "react";
 
 function FeedBack() {
   return (
-    <div className="h-90" style={{ backgroundColor: '#212529' }}>
+    <div className="h-90">
       <div className="h-90 d-flex justify-content-center align-items-center">
         <form className="border-0 rounded-3 bg-dark bg-opacity-25 py-5 w-50 d-flex flex-column align-items-center text-white">
           <div className="mb-4">

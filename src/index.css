@@ -63,7 +63,11 @@ body {
   width: 20%;
 }
 
-.w-40{
+.w-10 {
+  width: 10%;
+}
+
+.w-40 {
   width: 40%;
 }
 
@@ -73,11 +77,55 @@ body {
 
 /* Login Custom CSS */
 .bg-login {
-  background-image: url('../public/assets/background_login.jpg');
+  background-image: url("../public/assets/background_login.jpg");
   background-size: cover;
 }
 
 .bg-register {
-  background-image: url('../public/assets/background_login.jpg');
+  background-image: url("../public/assets/background_login.jpg");
+  background-size: cover;
+}
+
+.input-number {
+  text-align: center;
+}
+
+.input-number:focus {
+  border: none;
+}
+
+.input-number:focus-visible {
+  border: none;
+}
+
+.user-mng {
+  max-height: 600px;
+}
+
+.user-mng-table {
+  overflow-y: scroll;
+}
+
+.table {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.services-mng {
+  max-height: 600px;
+}
+
+.order-table-items {
+  max-height: 2rem;
+  overflow: hidden;
+}
+
+.update-user {
+  background-image: url("../public/assets/background.jpg");
+  background-size: cover;
+}
+
+.menu-item {
+  background-image: url("../public/assets/about2.jpg");
   background-size: cover;
 }

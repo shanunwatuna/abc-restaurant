@@ -1,40 +1,38 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from "react";
 
 const initialMenuItems = [
-  { id: 1, name: 'Chess Burger', price: 850, description: 'Juicy chess burger' },
+  {
+    id: 1,
+    name: "Chess Burger",
+    price: 850,
+    description: "Juicy chess burger",
+  },
 ];
 
 function AdminMenu() {
-  
   const [menuItems, setMenuItems] = useState(initialMenuItems);
- 
   const [selectedItemIndex, setSelectedItemIndex] = useState(0);
-  
   const [currentItem, setCurrentItem] = useState({
     id: 0,
-    name: '',
-    price: '',
-    description: ''
-  });
-  
-  const [newMenuItem, setNewMenuItem] = useState({
-    name: '',
+    name: "",
     price: "",
-    description: ''
+    description: "",
   });
 
-  
+  const [newMenuItem, setNewMenuItem] = useState({
+    name: "",
+    price: "",
+    description: "",
+  });
+
   const selectedItem = menuItems[selectedItemIndex];
 
-  
   useEffect(() => {
     if (selectedItem) {
       setCurrentItem(selectedItem);
     }
   }, [selectedItem]);
 
-  
   const handleAddMenuItem = (e) => {
     e.preventDefault();
     if (newMenuItem.name && newMenuItem.price && newMenuItem.description) {
@@ -43,15 +41,14 @@ function AdminMenu() {
         ...newMenuItem,
       };
       setMenuItems([...menuItems, newItem]);
-      setNewMenuItem({ name: '', price: 0, description: '' });
+      setNewMenuItem({ name: "", price: 0, description: "" });
     }
   };
-
 
   const handleRemoveMenuItem = (id) => {
     const updatedMenuItems = menuItems.filter((item) => item.id !== id);
     setMenuItems(updatedMenuItems);
-   
+
     setSelectedItemIndex(0);
   };
 
@@ -61,7 +58,10 @@ function AdminMenu() {
       <h2 className="text-2xl font-bold mb-4">Menu Items</h2>
       <ul className="mb-4">
         {menuItems.map((menuItem) => (
-          <li key={menuItem.id} className="flex justify-between items-center mb-2">
+          <li
+            key={menuItem.id}
+            className="flex justify-between items-center mb-2"
+          >
             <span className="text-lg">{menuItem.name}</span>
             <span className="text-lg">Rs.{menuItem.price.toFixed(2)}</span>
             <button
@@ -84,19 +84,27 @@ function AdminMenu() {
             type="text"
             id="name"
             value={newMenuItem.name}
-            onChange={(e) => setNewMenuItem({ ...newMenuItem, name: e.target.value })}
+            onChange={(e) =>
+              setNewMenuItem({ ...newMenuItem, name: e.target.value })
+            }
           />
         </div>
         <div className="mb-4">
           <label className="block text-lg font-bold mb-2" htmlFor="price">
             Price ,
-          </label>s
+          </label>
+          s
           <input
             className="block w-full p-2 pl-10 text-lg border border-gray-400 rounded"
             type="number"
             id="price"
             value={newMenuItem.price}
-            onChange={(e) => setNewMenuItem({ ...newMenuItem, price: parseFloat(e.target.value) })}
+            onChange={(e) =>
+              setNewMenuItem({
+                ...newMenuItem,
+                price: parseFloat(e.target.value),
+              })
+            }
           />
         </div>
         <div className="mb-4">
@@ -107,13 +115,12 @@ function AdminMenu() {
             className="block w-full p-2 pl-10 text-lg border border-gray-400 rounded"
             id="description"
             value={newMenuItem.description}
-            onChange={(e) => setNewMenuItem({ ...newMenuItem, description: e.target.value })}
+            onChange={(e) =>
+              setNewMenuItem({ ...newMenuItem, description: e.target.value })
+            }
           />
         </div>
-        <button
-          className="py-2 px-4 rounded"
-          type="submit"
-        >
+        <button className="py-2 px-4 rounded" type="submit">
           Add Menu Item
         </button>
       </form>
