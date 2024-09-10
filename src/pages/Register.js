@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Navigation from "../component/Navigation";
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:5000";
@@ -13,9 +12,16 @@ function Register() {
   const [userPassword, setUserPassword] = useState("");
   const [userPhone, setUserPhone] = useState("");
   const [userType, setUserType] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // To store error messages
 
   const handleRegisterUser = async (e) => {
     e.preventDefault();
+
+    // Validate required fields
+    if (!userName || !userEmail || !userPassword || !userPhone || !userType) {
+      setErrorMessage("All fields are required.");
+      return;
+    }
 
     const newUser = {
       name: userName,
@@ -33,21 +39,18 @@ function Register() {
       setUserPassword("");
       setUserPhone("");
       setUserType("");
-      alert("User added succefully!");
+      setErrorMessage(""); // Clear any error message
+      alert("User added successfully!");
       navigate("/login");
     } catch (error) {
+      setErrorMessage("Error creating user. Please try again.");
       console.error("Error creating user:", error);
     }
   };
 
   return (
-    <div className="vh-100 bg-register">
-      <div className="vh-100 bg-dark bg-opacity-50">
-        {/* Navigation */}
-        <div>
-          <Navigation />
-        </div>
-
+    <div className="bg-register">
+      <div className="bg-dark bg-opacity-50">
         {/* Register */}
         <div className="h-90">
           <div className="h-90 d-flex justify-content-center align-items-center">
@@ -56,8 +59,16 @@ function Register() {
               className="border-0 rounded-3 bg-dark bg-opacity-25 py-5 w-50 d-flex flex-column align-items-center text-white"
             >
               <div className="mb-4">
-                <h1 className="text-white">Register</h1>
+                <h1 className="text-white">Registration</h1>
               </div>
+
+              {/* Display error message */}
+              {errorMessage && (
+                <div className="mb-3 text-danger">
+                  {errorMessage}
+                </div>
+              )}
+
               <div className="mb-3 w-50">
                 <label
                   className="form-label w-100 text-start ps-2"
@@ -140,7 +151,7 @@ function Register() {
                   value={userType}
                   onChange={(e) => setUserType(e.target.value)}
                 >
-                  <option value="" selected>
+                  <option value="" disabled>
                     Select type
                   </option>
                   <option value="Customer">Customer Register</option>
@@ -151,7 +162,7 @@ function Register() {
                 Submit
               </button>
               <div className="mt-3">
-                Already have an account? Login <Link to="/login">here</Link>
+                Already have an account? <Link to="/login"> Login </Link>
               </div>
             </form>
           </div>

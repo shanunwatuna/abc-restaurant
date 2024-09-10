@@ -46,7 +46,7 @@ function FeedBack() {
               Phone Number
             </label>
             <input
-              type="password"
+              type="text"
               className="form-control"
               id="customerphonenumber"
               placeholder=""

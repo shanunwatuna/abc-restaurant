@@ -57,7 +57,7 @@ export const updateReservation = async (req, res) => {
   const rsvId = req.query.id;
   const updateData = req.body;
   try {
-    const updatedUser = await User.findOneAndUpdate(
+    const updatedUser = await Reservation.findOneAndUpdate(
       { id: rsvId },
       updateData,
       { new: true, runValidators: true },
@@ -74,9 +74,9 @@ export const updateReservation = async (req, res) => {
 export const deleteReservation = async (req, res) => {
   const rsvId = req.query.id;
   try {
-    const response = await User.findOneAndDelete({ id: rsvId });
+    const response = await Reservation.findOneAndDelete({ id: rsvId });
     if (!response) {
-      return res.status(404).send("User not found");
+      return res.status(404).send("Reservation not found");
     }
     res.json(`Reservation ${rsvId} deleted.`);
   } catch (error) {

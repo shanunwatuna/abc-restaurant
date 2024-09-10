@@ -51,6 +51,10 @@ body {
   height: 10%;
 }
 
+.mb-20 {
+  margin-bottom: 200px;
+}
+
 .h-90 {
   height: 90%;
 }
@@ -77,12 +81,12 @@ body {
 
 /* Login Custom CSS */
 .bg-login {
-  background-image: url("../public/assets/background_login.jpg");
+  background-image: url("../public/assets/Login.jpg");
   background-size: cover;
 }
 
 .bg-register {
-  background-image: url("../public/assets/background_login.jpg");
+  background-image: url("../public/assets/Reg.jpg");
   background-size: cover;
 }
 

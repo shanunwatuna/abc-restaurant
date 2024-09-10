@@ -32,6 +32,30 @@ function Staff() {
     setOrders(response.data);
   };
 
+  const deleteReservation = async (id) =>{
+    try {
+      const response = await axios.delete(`/reservations?id=${id}`);
+      alert(response.data);
+      getReservations();
+    } catch (error) {
+      console.error(error.message);
+      alert(error.message);
+    }
+  }
+
+  const deleteOrders =  async (id) =>{
+    try {
+      const response = await axios.delete(`/orders?id=${id}`);
+      alert(response.data);
+      getOrders();
+    } catch (error) {
+      console.error(error.message);
+      alert(error.message);
+    }
+  }
+
+
+  
   return (
     <div>
       <div id="staff-header">
@@ -77,8 +101,9 @@ function Staff() {
                       <td>{reservation.time}</td>
                       <td>{reservation.pax}</td>
                       <td>
-                        <button className="me-2 btn btn-success">Accept</button>
-                        <button className="btn btn-danger">Cancel</button>
+                        <button className="btn btn-danger" onClick={(id)=>{
+                          deleteReservation(reservation.id);
+                        }}>Cancel</button>
                       </td>
                     </tr>
                   ))}
@@ -110,8 +135,9 @@ function Staff() {
                       <td>{order.menu_items.length}</td>
                       <td>Rs. {order.total}</td>
                       <td>
-                        <button className="me-2 btn btn-success">Accept</button>
-                        <button className="btn btn-danger">Cancel</button>
+                        <button className="btn btn-danger" onClick={(id)=>{
+                          deleteOrders(order.id);
+                        }}>Cancel</button>
                       </td>
                     </tr>
                   ))}

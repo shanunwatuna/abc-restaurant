@@ -13,6 +13,7 @@ function Contact() {
           <div className="mb-1">No. 10, Flower Road, Colombo</div>
           <div className="mb-1">Tel: 0112-236-569</div>
           <div className="mb-1">Email: abcrestaurant@abc.lk</div>
+          <div className="mb-1">Branch: Colombo , Galle , Kandy </div>
         </div>
         <div className="w-50 d-flex justify-content-center align-items-end">
           <div>&copy; All Right Reserved 2024 ABC Restaurant</div>

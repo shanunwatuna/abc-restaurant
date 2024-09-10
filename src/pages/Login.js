@@ -55,8 +55,8 @@ function Login() {
   // }, [user]);
 
   return (
-    <div className="vh-100 bg-login">
-      <div class="vh-100 bg-dark bg-opacity-50">
+    <div className="vh-150 bg-login">
+      <div class="vh-150 bg-dark bg-opacity-50">
         {/* Navigation */}
         <div>
           <Navigation />
@@ -124,7 +124,7 @@ function Login() {
                 Submit
               </button>
               <div className="mt-3">
-                New user? Register <Link to="/signup">here</Link>
+                New user? Register click <Link to="/signup">here</Link>
               </div>
             </form>
           </div>

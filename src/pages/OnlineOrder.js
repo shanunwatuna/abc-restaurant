@@ -191,7 +191,7 @@ function OnlineOrder() {
 
       {/* Display added items and total price */}
       {/* Order Summary */}
-      <div className="w-100 mx-auto">
+      <div className="w-100 mb-20">
         <h2 className="pt-3">Order Summary</h2>
         <div className="w-40 mx-auto mt-4 rounded">
           {order.length === 0 ? (
@@ -219,8 +219,8 @@ function OnlineOrder() {
             <span className="fw-bold">Rs. {totalPrice}</span>
           </div>
         </div>
-        <div className="w-20 my-4 mx-auto d-flex justify-content-center">
-          <button onClick={handleOnlineOrder} className="w-40 btn btn-light">
+        <div className="w-20 my-4 my-96 d-flex justify-content-center ">
+          <button onClick={handleOnlineOrder} className="w-40 btn btn-light mb-40" disabled={order.length === 0}>
             Place Order
           </button>
         </div>

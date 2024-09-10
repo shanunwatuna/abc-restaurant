@@ -68,6 +68,28 @@ function Admin() {
     }
   };
 
+  const deleteReservation = async (id) =>{
+    try {
+      const response = await axios.delete(`/reservations?id=${id}`);
+      alert(response.data);
+      getReservations();
+    } catch (error) {
+      console.error(error.message);
+      alert(error.message);
+    }
+  }
+
+  const deleteOrders =  async (id) =>{
+    try {
+      const response = await axios.delete(`/orders?id=${id}`);
+      alert(response.data);
+      getOrders();
+    } catch (error) {
+      console.error(error.message);
+      alert(error.message);
+    }
+  }
+
   return (
     <div>
       <div id="admin-header">
@@ -159,7 +181,9 @@ function Admin() {
                       <td>{reservation.pax}</td>
                       <td>
                         <button className="me-2 btn btn-success">Edit</button>
-                        <button className="btn btn-danger">Delete</button>
+                        <button className="btn btn-danger" onClick={()=>{
+                          deleteReservation(reservation.id)
+                        }}>Delete</button>
                       </td>
                     </tr>
                   ))}
@@ -191,7 +215,9 @@ function Admin() {
                       <td>Rs. {order.total}</td>
                       <td>
                         <button className="me-2 btn btn-success">Edit</button>
-                        <button className="btn btn-danger">Delete</button>
+                        <button className="btn btn-danger" onClick={()=>{
+                          deleteOrders(order.id);
+                        }}>Delete</button>
                       </td>
                     </tr>
                   ))}
