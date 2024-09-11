@@ -2,11 +2,11 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navigation from "../component/Navigation";
 import axios from "axios";
-import { AppContext } from "../context/AppContext";
+import { AppContext } from "../context/AppContext"; // Importing AppContext correctly
 
 axios.defaults.baseURL = "http://localhost:5000";
 
-function Login() {
+function UserLogin() { // Changed from Login to UserLogin
   const { setUser } = useContext(AppContext);
   const navigate = useNavigate();
 
@@ -50,13 +50,9 @@ function Login() {
     }
   };
 
-  // useEffect(() => {
-  //   console.log(user); // Log the user whenever it changes
-  // }, [user]);
-
   return (
     <div className="vh-150 bg-login">
-      <div class="vh-150 bg-dark bg-opacity-50">
+      <div className="vh-150 bg-dark bg-opacity-50">
         {/* Navigation */}
         <div>
           <Navigation />
@@ -72,55 +68,55 @@ function Login() {
               <div className="mb-4">
                 <h1 className="text-white">Login</h1>
               </div>
-              <div class="mb-3 w-50">
+              <div className="mb-3 w-50">
                 <label
-                  class="form-label w-100 text-start ps-2"
-                  for="loginEmail"
+                  className="form-label w-100 text-start ps-2"
+                  htmlFor="loginEmail"
                 >
                   Email
                 </label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="loginEmail"
                   placeholder="example@test.com"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
-              <div class="mb-3 w-50">
+              <div className="mb-3 w-50">
                 <label
-                  class="form-label w-100 text-start ps-2"
-                  for="loginPassword"
+                  className="form-label w-100 text-start ps-2"
+                  htmlFor="loginPassword"
                 >
                   Password
                 </label>
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="loginPassword"
                   placeholder="••••••••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <div class="mb-3 w-50">
-                <label for="branch" class="form-label w-100 text-start ps-2">
+              <div className="mb-3 w-50">
+                <label htmlFor="branch" className="form-label w-100 text-start ps-2">
                   User Type
                 </label>
                 <select
-                  class="form-select"
+                  className="form-select"
                   aria-label=""
                   value={userType}
                   onChange={(e) => setUserType(e.target.value)}
                 >
-                  <option selected>Select type</option>
+                  <option value="">Select type</option>
                   <option value="Customer">Customer</option>
                   <option value="Staff">Staff</option>
                   <option value="Admin">Admin</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-dark w-50 mt-3">
+              <button type="submit" className="btn btn-dark w-50 mt-3">
                 Submit
               </button>
               <div className="mt-3">
@@ -134,4 +130,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default UserLogin; // Export with the new name
