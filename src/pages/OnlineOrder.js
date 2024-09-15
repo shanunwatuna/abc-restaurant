@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../context/AppContext";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-axios.defaults.baseURL = "http://localhost:5000";
+
+axios.defaults.baseURL = "http://localhost:4500";
 
 function OnlineOrder() {
+  const navigate = useNavigate();
+
   const { user } = useContext(AppContext);
 
   const [menu, setMenu] = useState([]);
@@ -96,9 +100,8 @@ function OnlineOrder() {
 
     try {
       const response = await axios.post("/orders", newOrder);
-      // reset form
       setOrder([]);
-      alert(response.data.message);
+      navigate('/payment', { state: { total: totalPrice } });
     } catch (error) {
       console.error("Request failed: ", error.response?.data || error.message);
       alert(`Request failed: ${error.response.data.message}`);

@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../context/AppContext";
+import { Link, useNavigate } from "react-router-dom";
+
 
 function Navigation() {
+  const { user,setUser } = useContext(AppContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setUser("");
+    navigate("/");
+  };
+
   return (
     <div>
       <nav class="navbar navbar-expand-lg bg-transparent">
@@ -14,7 +25,7 @@ function Navigation() {
             </div>
           </a>
           <div class="" id="navbarNav">
-            <ul class="navbar-nav">
+            {user === "" ? <ul class="navbar-nav">
               <li class="nav-item">
                 <a class="nav-link text-light" aria-current="page" href="#home">
                   Home
@@ -41,8 +52,8 @@ function Navigation() {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light" href="#reservation">
-                  Reservation
+              <a class="nav-link text-light" href="#reviews">
+                  Reviews
                 </a>
               </li>
               <li class="nav-item">
@@ -50,7 +61,14 @@ function Navigation() {
                   Contact
                 </a>
               </li>
-            </ul>
+            </ul> : <ul class="navbar-nav">
+              <li class="nav-item cursor" onClick={handleLogout}>
+                <a class="nav-link text-light">
+                  Logout
+                </a>
+              </li>
+            </ul>}
+
           </div>
         </div>
       </nav>

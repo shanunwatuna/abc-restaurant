@@ -133,3 +133,7 @@ body {
   background-image: url("../public/assets/about2.jpg");
   background-size: cover;
 }
+
+.cursor {
+  cursor: pointer;
+}

@@ -11,8 +11,14 @@ function Gallery() {
         <div className="fs-1 h-100 d-flex align-items-center">&lt;</div>
         <div className="w-100 h-100 px-2 d-flex align-items-center justify-content-center">
           <img
-            src="assets/about.jpg"
+            src="assets/Image1.jpg"
             alt="gallery 1"
+            className="object-fit-cover w-100 h-100"
+          />
+          <img
+          
+            src="assets/Image2.jpg"
+            alt="gallery 2"
             className="object-fit-cover w-100 h-100"
           />
         </div>

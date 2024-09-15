@@ -12,6 +12,7 @@ import Admin from "./pages/admin/Admin";
 import UpdateUser from "./pages/admin/UpdateUser";
 import MenuItem from "./pages/admin/MenuItem";
 import Staff from "./pages/staff/Staff";
+
 function App() {
   return (
     <Router>
